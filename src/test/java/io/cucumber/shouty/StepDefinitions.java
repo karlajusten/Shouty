@@ -4,23 +4,30 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
+import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
+
 public class StepDefinitions {
-    
+
+    private Person lucy;
+    private Person sean;
+    private String messageFromSean;
+
     @Given("Lucy is located {int} meters from Sean")
     public void lucy_is_located_meters_from_Sean(Integer distance) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        lucy = new Person();
+        sean = new Person();
+        lucy.moveTo(distance);
     }
 
     @When("Sean shouts {string}")
-    public void sean_shouts(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void sean_shouts(String message) {
+        sean.shout(message);
+        messageFromSean = message;
     }
 
     @Then("Lucy hears Sean’s message")
     public void lucy_hears_Sean_s_message() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertEquals(asList(messageFromSean),lucy.getMessageHeard());
     }
 }
