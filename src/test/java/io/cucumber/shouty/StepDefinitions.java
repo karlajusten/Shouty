@@ -9,14 +9,12 @@ import static org.junit.Assert.assertEquals;
 
 public class StepDefinitions {
 
-    private Person lucy;
-    private Person sean;
+    private Person lucy = new Person("Lucy");
+    private Person sean = new Person("Sean");
     private String messageFromSean;
 
-    @Given("Lucy is located {int} meters from Sean")
-    public void lucy_is_located_meters_from_Sean(Integer distance) {
-        lucy = new Person();
-        sean = new Person();
+    @Given("{person} is located {int} meter(s) from Sean")
+    public void lucy_is_located_meters_from_Sean(Person person, Integer distance) {
         lucy.moveTo(distance);
     }
 
